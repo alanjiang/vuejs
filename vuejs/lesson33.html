@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson33</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+    
+     <my-component :width="100"></my-component>
+     
+     
+    </div>
+    
+    <script>
+    
+   
+    var style={
+               width:this.width+'px',
+				
+				border: '1px solid #000000',
+				
+				color:'red'
+ 	};
+    Vue.component('my-component',{
+    	
+    	props:['width'],
+    	template:'<div :style="style">Html Content</div>',
+    	
+    	data:function(){
+    	
+    		return style;
+    	}
+    	
+
+    	
+    });
+    
+    var app= new Vue({
+    	 
+    	 el:"#app"
+    	
+     })
+    
+    </script>
+    
+</body>
+</html>

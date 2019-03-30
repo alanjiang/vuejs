@@ -1,0 +1,90 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>slot</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+
+
+  <div id="app">
+  
+    <my-list :books="books">
+    
+      <template slot="book" scope="props">
+        <li>{{ props.bookName }} </li>
+      </template>
+    
+    </my-list>
+  
+   </div>
+
+ 
+    <script>
+    
+     
+      
+      Vue.component('my-list',{
+    	  
+    	  props:
+    	  {
+    		  
+    		 books:{
+    			  
+    			 type:Array,
+    			 
+    			 default:function(){
+    				 
+    				 return [
+    	    			   
+    	    			 {name: 'A'} ,
+    	    			 {name: 'B'} ,
+    	    			 {name: 'C'} 
+    	    			   
+    	    		   ];
+    			 }
+    			 
+    			  
+    		 } 
+    		  
+    	   },
+    	  
+    	  template:'<ul> <slot name="book" v-for="book in books" :bookName="book.name"> </slot> </ul>'
+    	 
+           
+        });
+    	  
+    	  
+      var app=new Vue({
+    	
+    	  el:'#app',
+    	  
+    	  data:{
+    		  
+    		 books:[
+    			   
+    			 {name: 'A'} ,
+    			 {name: 'B'} ,
+    			 {name: 'C'} 
+    			   
+    		   ]  
+      
+    	  }
+  
+      });
+      
+      
+      
+      
+    </script>
+    
+</body>
+</html>

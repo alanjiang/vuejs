@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>我要补单</title>
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--<meta name="format-detection" content="telephone = no" />-->
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="我要补单" />
+    <meta name="msapplication-TileColor" content="#090a0a">
+    <link rel="stylesheet" href="css/css_style.css">
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+</head>
+<body class="grayBy">
+    <div class="order_box">
+        <div class="order_header">
+            <h2>订单编号: 5566778899</h2>
+            <p>2016.11.6 23:30</p>
+            <span class="up_icon"></span>
+        </div>
+        <ul class="patch_list">
+            <li>
+                <a href="proinfo.html" class="pic"><img src="images/temp/p2.jpg" /></a>
+                <h2><a href="proinfo.html">韩版冬季中长款显瘦高领针织连衣裙长裙</a> </h2>
+                <h3><b>¥ 188.00</b><span><font>M</font>黑色</span><em>x<label>1</label></em></h3>
+                <div class="patch_op">
+                    <b class="add_cart">加入购物车</b>
+                    <span>补单</span>
+                    <div class="quantity-form">
+                        <a class="icon_lower"></a>
+                        <input  type="text" class="input_quantity" value="1" readonly="readonly" max="10" />
+                        <a class="icon_plus"></a>
+                    </div>
+                </div>   
+            </li>
+            <li>
+                <a href="proinfo.html" class="pic"><img src="images/temp/p2.jpg" /></a>
+                <h2><a href="proinfo.html">韩版冬季中长款显瘦高领针织连衣裙长裙</a> </h2>
+                <h3><b>¥ 188.00</b><span><font>M</font>黑色</span><em>x<label>1</label></em></h3>
+                <div class="patch_op">
+                    <b class="add_cart">加入购物车</b>
+                    <span>补单</span>
+                    <div class="quantity-form">
+                        <a class="icon_lower"></a>
+                        <input type="text" class="input_quantity" value="88" readonly="readonly" max="90" />
+                        <a class="icon_plus"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="order_box">
+        <div class="order_header">
+            <h2>订单编号: 5566778899</h2>
+            <p>2016.11.6 23:30</p>
+            <span class="up_icon"></span>
+        </div>
+        <ul class="patch_list">
+            <li>
+                <a href="proinfo.html" class="pic"><img src="images/temp/p2.jpg" /></a>
+                <h2><a href="proinfo.html">韩版冬季中长款显瘦高领针织连衣裙长裙</a> </h2>
+                <h3><b>¥ 188.00</b><span><font>M</font>黑色</span><em>x<label>1</label></em></h3>
+                <div class="patch_op">
+                    <b class="add_cart">加入购物车</b>
+                    <span>补单</span>
+                    <div class="quantity-form">
+                        <a class="icon_lower"></a>
+                        <input type="text" class="input_quantity" value="1" readonly="readonly" max="10" />
+                        <a class="icon_plus"></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="proinfo.html" class="pic"><img src="images/temp/p2.jpg" /></a>
+                <h2><a href="proinfo.html">韩版冬季中长款显瘦高领针织连衣裙长裙</a> </h2>
+                <h3><b>¥ 188.00</b><span><font>M</font>黑色</span><em>x<label>1</label></em></h3>
+                <div class="patch_op">
+                    <b class="add_cart">加入购物车</b>
+                    <span>补单</span>
+                    <div class="quantity-form">
+                        <a class="icon_lower"></a>
+                        <input  type="text" class="input_quantity" value="88" readonly="readonly" max="90" />
+                        <a class="icon_plus"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="op_box"><input id="Button1" type="button" value="去购物车" class="red_btn" onclick=" window.location.href = 'patch_cart.html';" /></div>
+</body>
+</html>
+<script type="text/javascript">
+    $(".order_box").click(function () {
+        $(this).find(".patch_list").toggle();
+    });
+    //加入购物车
+    $(".add_cart").click(function () {
+        alert("加入购物车成功。")
+    });
+    //减效果
+    $(".quantity-form .icon_lower").click(function () {
+        var num = parseInt($(this).next(".input_quantity").val());
+        if (num > 1) {
+            $(this).next(".input_quantity").val(num - 1);
+        }
+    });
+    //加效果
+    $(".quantity-form .icon_plus").click(function () {
+        var num = parseInt($(this).prev(".input_quantity").val());
+        var max = parseInt($(this).prev(".input_quantity").attr("max"));
+        if (num < max) {
+            $(this).prev(".input_quantity").val(num + 1);
+        }
+    });
+</script>

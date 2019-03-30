@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>slot</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+
+
+  <div id="app">
+  
+    <child-component>
+       <template scope="props">
+         <p>Parent Comonent</p>
+         <p>{{ props.msg }} </p>
+       </template>
+    </child-component>
+  
+   </div>
+
+ 
+    <script>
+    
+     
+      
+      Vue.component('child-component',{
+    	  
+    	 template:'<div class="container">'+
+    	             '<slot msg="From Child Component content"></slot>'+
+  	              '</div>'
+           
+    	 
+    	 
+      });
+    	  
+    	  
+      var app=new Vue({
+    	
+    	  el:'#app'
+  
+      });
+      
+      
+      
+      
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson24</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+    
+    <table>
+    
+     <tbody is="my-component"></tbody>
+    </table>
+      
+     
+    </div>
+    
+    <script>
+   
+     var child={
+    	    	
+    	    	template:'<h1 style="color:red;">{{ message }}</h1>',
+    	    	
+    	    	data:function(){
+    	    		
+    	    		return {
+    	    			
+    	    			message:'My Hello World!'
+    	    		}
+    	    	}
+    	    };
+    
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 components:{
+    		 
+    		 'my-component':child
+    	 }
+    	
+     })
+    
+    </script>
+   
+</body>
+</html>

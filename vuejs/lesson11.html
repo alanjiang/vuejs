@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson11</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+      
+      总价：{{ prices }}
+      
+      
+    </div>
+    
+    <script>
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 data:{
+    		 
+    		 package1:[
+    			 {
+    			     name:'iPhone6s plus',
+    			     price:7689,
+    			     count:2
+    			 },
+    			 
+    			 {
+    			     name:'iPad',
+    			     price:2890,
+    			     count:1
+    			 }
+    		 ],
+    		 package2:[
+    			 {
+    			     name:'Apple',
+    			     price:3,
+    			     count:5
+    			 },
+    			 
+    			 {
+    			     name:'banana',
+    			     price:3.5,
+    			     count:10
+    			 }
+    		 ]
+    		  
+    	 },
+    	 
+    	 computed:{
+    		 
+    		 prices: function(){
+    			var prices=0;
+    			this.package1.forEach(function(d){
+    				prices+=d.price * d.count;
+    			});
+    			this.package2.forEach(function(d){
+    				prices+=d.price * d.count;
+    			});
+    			return prices;
+    		 }
+    	 }
+    	 
+     })
+    
+    </script>
+   
+</body>
+</html>

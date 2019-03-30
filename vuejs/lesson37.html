@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson37</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+    
+    <div id="mount-div">
+    
+    
+     
+    </div>
+    
+    <script>
+    
+    var MyComponent=Vue.extend({
+    
+     template:'<div>Hello: {{ name }}</div>',
+     
+     data: function(){
+    	 
+    	 return {
+    		 
+    		 name:"Alan P Jiang, World"
+    	 }
+    	 
+     }
+    	
+    	
+    	
+    	
+    });
+    
+    
+    var component=new MyComponent().$mount();
+    
+    	
+    document.getElementById("mount-div").appendChild(component.$el)	;
+    
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson17</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+      
+     <template v-if="status===1">
+       <p>text1</p>
+        <p>text2</p>
+        <p>text3</p>
+     </template>
+    </div>
+    
+    <script>
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 data:{
+    		
+    		 status:1
+    		
+    	 }
+    	 
+     })
+    
+    </script>
+   
+</body>
+</html>

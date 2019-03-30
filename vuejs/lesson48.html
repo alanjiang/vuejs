@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>render-01</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+
+
+  <div id="app"> 
+  
+   <ele></ele>
+   
+  </div>
+
+   <script>
+   
+      Vue.component('ele',{
+    	  
+        //template:'<div id="element" :class="{show:show}" @click="handleClick"> Click Me  </div>',
+        
+        
+        template:'<div id="element" v-show="show" @click="handleClick"> Click Me  </div>',
+        
+        data:function(){
+        	
+        	
+        	 return {
+        		 
+        		 show:true
+        	 }
+        },
+        
+        methods:{
+        	
+        	
+        	 handleClick:function(){
+        		 var __this=this;
+        		 console.log('clicked');
+        		 __this.show=false;
+        	 }
+        }
+      
+      
+      });
+      
+      
+      
+      
+
+      var app=new Vue({
+ 
+    	  el:'#app'
+    	 
+      });
+
+    </script>
+    
+</body>
+</html>

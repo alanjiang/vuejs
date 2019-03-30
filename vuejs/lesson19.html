@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson19</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+      
+    <table>
+    
+      <tr>
+      <th>Name</th> <th>price</th>
+      <tr>
+      
+      <template v-for="(book,index) in books">
+      <tr>
+          <td>{{index}} - {{book.name}}</td>  <td>${{book.price}}</td>
+       <tr>
+      </template>
+    
+    </table>
+     
+    </div>
+    
+    <script>
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 data:{
+    		
+    		books:[
+    			
+    		 {name:'Java',price:'12.5'},
+    			
+    		 {name:'JavaScript',price:'32.5'},	
+    		 
+    		 {name:'Html',price:'90.5'}
+    			
+    		]
+    
+    
+    		
+    	 }
+    	 
+    	 
+     });
+    
+    app.books.push({"name":"s1",price:"0"});
+    
+    
+    
+    
+    </script>
+   
+</body>
+</html>

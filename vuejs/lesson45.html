@@ -1,0 +1,76 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>动态组件</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+
+
+  <div id="app"> 
+  
+
+   <button @click="switchView('A')"> Switch A</button>
+   <button @click="switchView('B')"> Switch B</button>
+    <button @click="switchView('C')"> Switch C</button>
+    
+    
+     <component :is="currentView"></component>
+     
+     
+  </div>
+
+   <script>
+    
+ 
+    
+    	  
+      var app=new Vue({
+    	
+    	  el:'#app',
+    	  
+    	  components:{
+    		  
+    		   comA: {
+    			   
+    			    template:'<div>Component A </div>'
+    		   },
+    		   comB: {
+    			   
+   			    template:'<div>Component B </div>'
+   		       },
+   		       comC: {
+ 			   
+   			    template:'<div>Component C </div>'
+   		       }
+    	  },
+    	  
+    	  data:{
+    		  
+    		   currentView :'comA'
+    	  },
+    	  methods:{
+    		  
+    		  switchView:function(flag){
+    			  
+    			  this.currentView='com'+flag;
+    		  }
+    	  }
+  
+      });
+      
+      
+      
+      
+    </script>
+    
+</body>
+</html>

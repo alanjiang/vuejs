@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson18</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+      
+     <template v-if="type==='name'">
+       <label>Name:</label>
+       <input placeholder="input Name">
+     </template>
+      <template v-else>
+       <label>Email:</label>
+       <input placeholder="input Email">
+     </template>
+     <button @click="handleToggleClick">switch type</button>
+    </div>
+    
+    <script>
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 data:{
+    		
+    		 type:'name'
+    		
+    	 },
+    	 methods:{
+    		 
+    		 handleToggleClick:function(){
+    			 
+    			 this.type=this.type==='name'?'mail':'name';
+    		 } 
+    		 
+    	 }
+    	 
+     })
+    
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+ 
+</head>
+
+
+<body>
+
+     <div id="app" v-cloak>
+     
+       <div class="main" v-clickoutside="handleClose">
+         
+          <button @click="show = !show">Click the Menu</button>
+             
+          <div class="dropdown" v-show="show">
+          
+           <p> When clickouside Close the Menu </p>
+           
+          </div>
+       
+       </div>
+     
+     </div>
+    <script src="../js/vue.min.js"></script>
+    <script src="index.js"></script>
+     <script src="clickoutside.js"></script> 
+</body>
+</html>

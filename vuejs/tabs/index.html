@@ -1,0 +1,69 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Tabs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  
+ 
+</head>
+
+
+<body>
+
+    <div id="app" v-cloak>
+    
+      <tabs v-model="activeKey">
+      
+         <pane label="Tag1" name="1">
+           
+            Tag1 content
+         </pane>
+       
+         <pane label="Tag2" name="2">
+           
+            Tag2 content
+            
+            <img src="../../images/wode@3x.png" >
+         </pane>
+       
+       
+         <pane label="Tag3" name="3">
+           
+            Tag3 content
+         </pane>
+       
+       </tabs>
+     
+    
+    </div>
+
+
+      <script src="../js/vue.min.js"></script>
+    <script src="pane.js"></script>
+     <script src="tabs.js"></script>
+     
+     <script>
+     
+     var app=new Vue({
+    	 
+    	 el:'#app',
+    	 
+    	 data:{
+    		 
+    		 activeKey:'2'
+    		 
+    	 }
+    	  
+     });
+    		 
+     
+     </script>
+   
+    
+</body>
+</html>

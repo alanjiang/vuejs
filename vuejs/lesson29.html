@@ -1,0 +1,44 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson28</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+    
+    <div id="app">
+      
+     <my-component alert-msg="来自父组件的内容"></my-component>
+     
+    </div>
+    
+    <script>
+    
+   
+    
+    Vue.component('my-component',{
+    	
+    	props:['alertMsg'],
+    	template:'<div>Hello ,{{ alertMsg }}</div>'
+    	
+    	
+    });
+    
+    var app= new Vue({
+    	 
+    	 el:"#app"
+    	
+     })
+    
+    </script>
+    
+</body>
+</html>

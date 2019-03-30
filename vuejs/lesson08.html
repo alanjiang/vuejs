@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson01</title>
+   
+    <script type="text/javascript" src="js/vue.min.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+      
+      <a v-bind:href="url">Home</a>
+      <img v-bind:src="imgUrl">
+    </div>
+    
+    <script>
+    
+    var app= new Vue({
+    	 
+    	 el:"#app",
+    	 
+    	 data:{
+    		url:'http://www.dianliaome.com',
+    		imgUrl:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553436328&di=4400bb4991423645b402e66e338c2ed0&imgtype=jpg&er=1&src=http%3A%2F%2Fpic.nen.com.cn%2F600%2F13%2F50%2F57%2F13505701_893640.jpg'
+    	 }
+    	 
+     })
+    
+    </script>
+   
+</body>
+</html>

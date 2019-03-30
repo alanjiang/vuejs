@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Lesson39</title>
+   <script type="text/javascript" src="js/vue.min.js"></script>
+   
+    
+    
+</head>
+<body>
+
+
+  <div id="app">
+  
+  <p>{{ message }}</p>
+  
+  <component-a> </component-a>
+  
+   </div>
+
+ 
+    <script>
+    
+      var bus=new Vue();
+      
+      Vue.component('component-a',{
+    	  
+    	 template:'<button @click="handleEvent">Event</button>',
+    	 
+    	 methods:{
+    		 
+    		 handleEvent:function(){
+    			 
+    			 bus.$emit("on-message","From component-a content");
+    		 }
+    		 
+    		 
+    	 }
+    	  
+    	  
+    	  
+    	  
+      }
+    		  
+      
+      
+      
+      );
+      
+      var app=new Vue({
+    	 
+    	  el:'#app',
+    	  data:{
+    		 
+    		 message:''
+    	  },
+    	  
+    	  mounted:function(){
+    		  
+    		 var __this=this;
+    		 
+    		 bus.$on('on-message',function(msg){
+    			 
+    			 __this.message=msg;
+    			 
+    		 });
+    		  
+    	  }
+    	  
+    	  
+      });
+      
+      
+      
+      
+    </script>
+    
+</body>
+</html>

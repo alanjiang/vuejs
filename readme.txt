@@ -16,3 +16,7 @@ npm的背后，是基于couchdb的一个数据库，详细记录了每个包的�
 2.2 cnpm install git+https://github.com/vuematerial/vue-material.git
 
 2.3 cnpm install vue@^2.5.0
+
+（ECMAScript 6入门）
+
+ Webpack

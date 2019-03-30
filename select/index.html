@@ -1,0 +1,134 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+<meta charset="utf-8">  
+	<style>  
+	*{
+	    padding: 0;
+	    margin: 0;
+	}
+	ul,li {
+	    list-style: none;
+	}
+	li {
+	    line-height: 2em;
+	}
+	li:hover {
+	    background-color: #f9f9f9;
+	    border-radius:5px;
+	    cursor: pointer;
+	}
+	input{
+	    cursor:pointer;
+	    outline:none;
+	}
+	#app {
+	    margin-top: 20px;
+	}
+	#app h2 {
+	    text-align: center;
+	}
+	.wrap {
+	    background-color: rgba(56, 170, 214, 0.45);
+	    border-radius: 20px;
+	    width: 300px;
+	    margin: 40px;
+	    padding: 20px;
+	}
+	input[type="button"] {
+	    font-size:14px;
+	    margin-left:2px;
+	    padding:2px 5px;
+	    background-color:rgb(228, 33, 33);
+	    color:white;
+	    border:1px solid rgb(228, 33, 33);
+	    border-radius:5px;
+	}
+	.clearFix {
+	    padding-left:
+	}
+	input.keyWord {
+	    border: 1px solid #777777;
+	    border-radius: 10px;
+	    height: 30px;
+	    width: 80%;
+	    padding-left: 10px;
+	    font-size: 16px;
+	}
+	ul.list {
+	    margin: 20px 0;
+	}
+	ul.list li {
+	    padding: 10px 0 0 10px;
+	
+	}
+</style>  
+</head>  
+ <body>  
+ <div id="app">
+        <div style="float: left;">
+            <h2>自定义下拉框</h2>
+            <custom-select btn-value="查询" v-bind:list="list1"></custom-select>
+        </div>
+        <div style="float: left;">
+            <h2>自定义下拉框2</h2>
+            <custom-select btn-value="搜索" v-bind:list="list2"></custom-select>
+        </div>
+    </div>
+    <div id="app1">
+        <custom-select></custom-select>
+    </div>
+        <script src="../vuejs/js/vue.min.js"></script>  
+  <script>
+        Vue.component("custom-select",{
+            data(){
+                return {
+                    selectShow:false,
+                    val:""
+                }
+            },
+            props:["btnValue","list"],
+            template:`<section class="wrap">
+                        <div class="searchIpt clearFix">
+                            <div class="clearFix">
+                                <input type="text" class="keyWord" :value="val" @click="selectShow = !selectShow" />
+                                <input type="button" :value="btnValue" />
+                                <span></span>
+                            </div>
+                            <custom-list 
+                                v-show="selectShow" 
+                                :list="list" 
+                                v-on:receive="changeValueHandle"
+                            >
+                            </custom-list>
+                        </div>
+                      </section>`,
+            methods:{
+                changeValueHandle(value){
+                    this.val = value;
+                }
+            }
+        });
+        Vue.component("custom-list",{
+            props:["list"],
+            template:`<ul class="list">
+                            <li v-for="item in list" @click="selectValueHandle(item)">{{item}}
+                            </li>
+                      </ul>`,
+            methods:{
+                selectValueHandle:function(item){
+                    this.$emit("receive",item)
+                }
+            }
+        })
+ 
+        new Vue({
+            el:"#app",
+            data:{
+                list1:['北京','上海','广州','杭州'],
+                list2:['17-01-11','17-02-11','17-03-11','17-04-11'],
+            }
+        })
+    </script>
+    </body>  
+</html>
