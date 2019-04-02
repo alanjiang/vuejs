@@ -1,0 +1,5 @@
+#ignore all the files
+*.class
+*.log
+node_modules
+dist

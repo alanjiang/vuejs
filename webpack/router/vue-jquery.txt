@@ -1,0 +1,27 @@
+1, package.json
+
+"jquery" : "^2.2.3"
+
+2, webpack.config.js
+
+
+var webpack = require("webpack")
+
+plugins:
+
+[
+  ...,
+  
+//new webpack.optimize.CommonsChunkPlugin('common.js'),
+  new webpack.ProvidePlugin({
+    jQuery: "jquery",
+    $: "jquery"
+  }
+  
+  
+  ]
+  
+  
+   跨域问题：
+  
+  https://www.cnblogs.com/chiyouguli/p/4283349.html

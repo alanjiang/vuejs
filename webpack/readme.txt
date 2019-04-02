@@ -290,7 +290,7 @@ publicfile:用来覆盖项目路径,生成该css文件的文件路径
  
  11, 生产环境打包部署
  
- package.json
+ 11,1 package.json
  
  "scripts":
  {
@@ -298,8 +298,348 @@ publicfile:用来覆盖项目路径,生成该css文件的文件路径
     "build":"webpack --progress --hide-modules --config webpack.prod.config.js"
  }
  
- 2,
+ 11.2, npm install 
   npm install webpack-merge --save-dev
   npm install html-webpack-plugin --save-dev
   npm install uglifyjs-webpack-plugin --save-dev
+  
+ 11.3 index.ejs
  
+ <!DOCTYPE html>
+
+ <html lang="zh-CN">
+ <head> 
+  <meta charset="UTF-8">
+  
+  <title>Webpack prod </title>
+  
+  <% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+  <% } %>
+ </head>
+ 
+ <body>
+ 
+   <div id="app"></div>
+ 
+   <% for (var js in htmlWebpackPlugin.files.js) { %>
+     <script type="text/javascript" src="<%=htmlWebpackPlugin.files.js[js] %>"> </script>
+     <% } %>
+   
+   
+ </body>
+
+
+</html>
+ 
+11.4, webpack.prod.config.js
+
+var webpack=require('webpack');
+
+var HtmlWebpackPlugin=require('html-webpack-plugin');
+
+var ExtractTextPlugin=require('extract-text-webpack-plugin');
+
+var merge=require('webpack-merge');
+
+var webpackBaseConfig=require('./webpack.config.js');
+
+
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+var ExtractTextPlugin=require('extract-text-webpack-plugin');
+
+
+webpackBaseConfig.plugins=[];
+
+module.exports=merge(webpackBaseConfig,{
+	
+   output:{
+	  
+	   publicPath:'/dist/',
+	   filename:'[name].[hash].js'
+	   
+   },
+   plugins:[
+	   
+	   new ExtractTextPlugin({
+		   
+		   filename:'[name].[hash].css',
+		   allChunks:true
+		   
+	   }),
+			   
+      new webpack.DefinePlugin({
+		   
+		    'process.env':{
+		    	
+		    	 NODE_ENV:'"production"'
+		    }
+		   
+	   }),
+	   
+	   
+	   
+	   new HtmlWebpackPlugin({
+		   
+		   filename:'./index_prod.html',
+		   template:'./index.ejs',
+		   inject:false
+		   
+		   
+		   
+	   }) ,
+	   
+	   new VueLoaderPlugin(),
+	   
+	   
+	   new ExtractTextPlugin("main.css")
+	   
+   ],
+   
+   optimization: {
+	    minimizer: [new UglifyJSPlugin()],
+	}
+
+
+});
+
+
+11.5 执行 $ npm run build 
+
+
+注：生成的项目只有一个index_prod.html 页面和一个压缩的main.[hash].js 文件。
+
+
+  
+12, vue-router 用法 
+ 
+12.1
+ npm install --save-dev vue-loader
+
+12.2 main.js
+
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from  './app.vue';
+
+Vue.use(VueRouter);
+
+
+const Routers=[
+	
+   {
+	  path:'/index' ,
+	  
+	  component:(resolve) => require(['./views/index.vue'],resolve)
+	   
+   },
+   
+   {
+	   
+	   path:'/about' ,
+		  
+	   component:(resolve) => require(['./views/about.vue'],resolve)
+   },
+   {
+	   
+	   path:'*',
+	   
+	   redirect:'/index'
+   }
+	
+	
+	
+	
+];
+
+
+const RouterConfig={
+		
+	mode:'history',
+	
+	routes:Routers
+		
+		
+};
+
+
+const router=new VueRouter(RouterConfig);
+
+new Vue({
+	
+	el:"#app",
+	
+	router:router,
+	
+	render:h => h(App)
+	
+	
+	
+});
+
+
+
+
+
+
+ 12.3 index.vue 
+ 
+ 12.4 about.vue
+ 
+ 12.5  webpack.config.js
+ 修改：output 和 ExtractTextPlugin
+ output:{
+       path:path.join(__dirname,'./dist'),
+       
+       publicPath:'/dist',
+       
+       filename:'[name].js',
+       
+       chunkFilename:'[name].chunk.js'
+    
+    } 
+    
+  new ExtractTextPlugin({
+    		
+    	  filename:'[name].css',
+    	  allChunks:true
+    		
+    	})
+    	
+ 12.6 package.json
+ 
+ "dev": "webpack-dev-server --host 127.0.0.1 --port 8080 --open --history-api-fallback --config webpack.config.js",
+  
+ 12.7 app.vue
+ 
+ 新增一个由路由视图<router-view>来挂载所有的路由组件。
+ 
+ <template>
+  <div>
+   <router-view></router-view>
+  </div>
+ </template>
+ 
+ 
+ 
+ 
+ 
+ 
+ ###########global#############
+ 
+ pm install  vue -g
+ npm install  vue-loader -g 
+ npm install  vue-style-loader -g
+ npm install  vue-template-compiler -g 
+ npm install  vue-hot-reload-api -g
+ npm install  babel --save
+ npm install  babel-loader --save
+ npm install babel-core --save
+ npm install babel-plugin-transform-runtime --save
+ 
+ npm install babel-preset-env --save
+ 
+ npm install babel-runtime --save
+ 
+ 
+ npm install sass-loader node-sass -g
+ 
+ npm install coffee-loader -g
+ 
+ npm install pug  -g
+ 
+ npm install webpack -g
+ 
+ npm install extract-text-webpack-plugin -g
+ 
+ npm install babel-loader --save
+ 
+  npm install babel-core --save
+ 
+ 
+ 多次出现 extract-text-webpack-plugin找不到
+ 
+ 1、添加-g标志来安装package.json（npm init -y -g）；
+
+2、添加-g标志来安装npm init您的项目目录（npm install webpack --save-dev -g）；
+
+3、再在终端输入npm install --save extract-text-webpack-plugin
+
+
+13 电商项目的正确使用：
+
+npm install
+npm run build
+npm run dev
+
+
+14 Vue中如何引入Ajax
+14.1, package.json
+
+"jquery" : "^2.2.3"
+
+14.2  webpack.config.js
+
+
+var webpack = require("webpack")
+
+plugins:
+
+[
+  ...,
+  
+  new webpack.ProvidePlugin({
+    jQuery: "jquery",
+    $: "jquery"
+  }
+ 
+  
+  ]
+  
+  
+  14.3 跨域问题：
+  
+  https://www.cnblogs.com/chiyouguli/p/4283349.html
+
+  (1)  crossdomain.xml
+  
+  
+  <?xml version="1.0"?>  
+  
+<cross-domain-policy>  
+  
+<allow-access-from domain="*" />  
+  
+</cross-domain-policy>
+
+  (2) clientaccesspolicy.xml
+  
+  <?xml version="1.0" encoding="utf-8" ?>
+<access-policy>
+  <cross-domain-access>
+    <policy>  
+      <allow-from http-request-headers="*">  
+        <domain uri="*"/>  
+      </allow-from>  
+      <grant-to>  
+        <resource path="/" include-subpaths="true"/>  
+      </grant-to>  
+    </policy>  
+  </cross-domain-access>  
+</access-policy>
+
+(3) CROSFilter Filter
+
+        httpResponse.addHeader("Access-Control-Allow-Headers", "*");
+		
+		httpResponse.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT, HEAD");
+        httpResponse.addHeader("Access-Control-Allow-Origin", "*");
+        chain.doFilter(request, response);
+
+
+
+
+
+
+
