@@ -9,6 +9,8 @@
          -->
         <router-link to="/order">跳转到 Order</router-link>
         <router-link to="/ajax">跳转到 Ajax</router-link>
+        
+        <router-link to="/vuexdemo">VUEX-DEMO</router-link>
     </div>
 </template>
 <script>

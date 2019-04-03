@@ -35,13 +35,15 @@
 			  
 			   alert(resMsg);
 			   
+			   alert(message.result);
+			   
               
             },
             
-            error: function (message) 
+            error: function (jqXHR, textStatus, errorThrown) 
 		    {
                
-			     alert("--error="+message); 
+			     alert("--error="+jqXHR.readyState); 
             }
               
          });
